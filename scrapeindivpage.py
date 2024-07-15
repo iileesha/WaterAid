@@ -27,7 +27,8 @@ for URL in links:
     print(URL)
     page = requests.get(URL) 
 
-    # Data Cleaning part 2: if URL does not point to html page, then ignore
+    # Data Cleaning part 2: if URL does not point to html page, then ignore 
+    # (this data cleaning) was placed here for greater efficiency because requests.get() was required
     content_type = page.headers.get('content-type', '')
     if 'text/html' not in content_type: 
         continue
@@ -98,18 +99,27 @@ for URL in links:
     except:
         event_date = "NA"
 
-    print("date is", event_date)
+    # print("date is", event_date)
 
     # [3] Extract Location (if available)
     try:
         #finds outer div container containing location div containers
-        loc_div = soup.find('div', {"class":"paragraph paragraph--type--property paragraph--view-mode--default"})
-        if loc_div:
+        loc_div = soup.findAll('div', {"class":"paragraph paragraph--type--property paragraph--view-mode--default"})
+        if loc_div != []:
+            for para in loc_div:
             #finds location label div container within previous div and check its text is "Location:" or "Where:"
-            loc_label = loc_div.find('div', class_='property property-label').get_text()
-            if "Location" in loc_label or "Where" in loc_label:
-                event_loc = loc_div.findAll('div', class_='property property-value')[0].get_text()
-            else:
+                loc_label = para.find('div', class_='property property-label').get_text()
+                if "Location" in loc_label or "Where" in loc_label:
+                    event_loc = para.findAll('div', class_='property property-value')[0].get_text()
+                    break
+                elif "Start" in loc_label:
+                    event_loc += para.findAll('div', class_='property property-value')[0].get_text() + " to "
+                    continue #to find next para with finish
+                elif "Finish" in loc_label:
+                    event_loc += para.findAll('div', class_='property property-value')[0].get_text()
+                else:
+                    continue
+            if event_loc == "":
                 event_loc = "NA"
 
         else: # Location usually contained within top left column, however sometimes it may be placed within the main body of information, hence type2:
@@ -127,6 +137,8 @@ for URL in links:
                         else:
                             event_loc = loc_content_type2_text[start:end]
                         break
+                    else:
+                        event_loc = "NA"
             else: # if <strong> not within <p>, there is no location 
                 event_loc = "NA"
             
@@ -206,6 +218,8 @@ for URL in links:
     idx_of_last_slash = len(URL) - 1 - rev_url.find('/')
     start_idx = URL.find('get-involved/') + 13
     cat1_activity_type = URL[start_idx:idx_of_last_slash].replace('-', ' ')
+    if cat1_activity_type.find("/") != -1:
+        cat1_activity_type = cat1_activity_type[:cat1_activity_type.find("/")]
     # print(cat1_activity_type)
 
     activity = pd.DataFrame({
