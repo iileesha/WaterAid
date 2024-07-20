@@ -236,4 +236,4 @@ for URL in links:
     activity_df = pd.concat([activity, activity_df])
 
 
-activity_df.to_csv('Listings Details.csv', index=False)
+activity_df.to_csv('Listings Details.csv', index=False, encoding='utf-8-sig')
