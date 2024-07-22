@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grid System Example</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="appstyle.css">
+    <!-- Use Karla Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <!-- <header class="site-navbar site-navbar-target" role="banner">
+        <div class="container">
+        <div class="row align-items-center position-relative">
+        <div class="col-3">
+        <div class="site-logo">
+        <a href="index.html" class="font-weight-bold">Brand</a>
+        </div>
+        </div>
+        <div class="col-9  text-right">
+        <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+        <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+        <ul class="site-menu main-menu js-clone-nav ml-auto ">
+        <li class="active"><a href="#" class="nav-link">Home</a></li>
+        <li><a href="#" class="nav-link">Portfolio</a></li>
+        <li><a href="#" class="nav-link">About</a></li>
+        <li><a href="#" class="nav-link">Services</a></li>
+        <li><a href="#" class="nav-link">Blog</a></li>
+        <li><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+        </nav>
+        </div>
+        </div>
+        </div>
+</header> -->
+<header>
+    <div class="container">
+        <img src="assets/wateraid-logo.png" alt="logo" class="logo"> 
+        <nav>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Our Impact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- This is the container layout for whole body-->
+
+<div class="container">
+    <!-- First Row for nav bar-->
+    <!-- <div class="row">
+        <div class="col-12"> 
+            This is the Nav Bar
+        </div>
+    </div> -->
+
+    <!-- Second Row for 'Who We Are'-->
+    <div class="row">
+         
+        <!-- Within "Who We Are" section, create another container with two columns-->
+        <div class="container">
+            <div class="row row-equal">
+                <div class="col-5 col-equal">
+                    <div class="content-equal">
+                    <h2> Who we are </h2>
+                    <p class="non-card-p"> We're an international not-for-profit organisation, determined to make clean water, decent toilets and good hygiene normal for everyone, everywhere. </p>
+                    </div>
+                </div>
+
+                <div class="col-7 col-equal">
+                    <div class="content-equal">
+                    <img src="assets/who-we-are-img.png" alt="Who-we-are" class="img-fluid" class="who-we-are-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Row for 'What We Do'-->
+    <div class="row">
+        <!-- Within "What We Do" section, create another container with three rows and
+         in last two rows have three columns-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>What we do</h2>
+                    <p class="non-card-p">We work with our supporters, partners and local communities to make clean water, decent toilets and good hygiene normal for everyone, everywhere.</p>
+                </div>
+            </div>
+
+            <div class="row mb-3"> <!-- First row of Cards-->
+                <div class="col-4 d-flex">
+                    <div class="card flex-fill"> <!-- Card 1-->
+                        <a href="https://www.wateraid.org/uk/what-we-do/water" class='card-link' target="_blank" rel="noopener noreferrer"></a>
+                        <img src="assets/clean-water.png" alt="Clean Water" style="width:100%" class="card-img">
+                        <div class="card-text-container">
+                        <h4><b>Clean Water</b></h4>
+                        <p class="card-para">Supporters like you have helped us reach over 28.5 million people with clean water around the world, but we won’t stop until everyone, everywhere has it.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4 d-flex">
+                    <div class="card flex-fill"> <!-- Card 2-->
+                        <a href="https://www.wateraid.org/uk/what-we-do/toilets" class='card-link' target="_blank" rel="noopener noreferrer"></a>
+                        <img src="assets/decent-toilets.png" alt="Decent Toilets" style="width:100%" class="card-img">
+                        <div class="card-text-container">
+                        <h4><b>Decent Toilets</b></h4>
+                        <p class="card-para">It’s a little-known fact that 1 in 5 people don't have their own toilet. Slowly, we're making progress, but with your help, we can speed things up.
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 d-flex">
+                    <div class="card flex-fill"> <!-- Card 3-->
+                        <a href="https://www.wateraid.org/uk/what-we-do/hygiene" class='card-link' target="_blank" rel="noopener noreferrer"></a>
+                        <img src="assets/good-hygiene.png" alt="Good Hygiene" style="width:100%" class="card-img">
+                        <div class="card-text-container">
+                        <h4><b>Good Hygiene</b></h4>
+                        <p class="card-para">Together with clean water and decent toilets, good hygiene practices can dramatically improve – and even save – people’s lives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3"> <!-- Second Row of Cards-->
+                <div class="col-4 d-flex">
+                    <div class="card flex-fill"> <!-- Card 4 -->
+                        <a href="https://www.wateraid.org/uk/what-we-do/climate-change" class='card-link' target="_blank" rel="noopener noreferrer"></a>
+                        <img src="assets/climate-change.jpg" alt="Climate Change" style="width:100%" class="card-img">
+                        <div class="card-text-container">
+                        <h4><b>Climate Change</b></h4>
+                        <p class="card-para">We work with communities who've been hit hardest by climate change to make sure they have a reliable supply of water and decent toilets, whatever the weather.
+
+                        </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 d-flex">
+                    <div class="card flex-fill"> <!-- Card 5 -->
+                        <a href="https://www.wateraid.org/uk/what-we-do/women-and-girls" class='card-link' target="_blank" rel="noopener noreferrer"></a>
+                        <img src="assets/women&girls.jpg" alt="Women&Girls" style="width:100%" class="card-img">
+                        <div class="card-text-container">
+                        <h4><b>Women and Girls</b></h4>
+                        <p class="card-para">Women and girls are disproportionately affected by a lack of clean water, decent toilets and good hygiene.
+
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
