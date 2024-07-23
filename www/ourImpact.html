@@ -1,21 +1,74 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grid System Example</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="appstyle.css">
+    <!-- Use Karla Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+</head>
 
-<html>
 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="appstyle.css">
-        <!-- <script type="text/javascript" src="jslibs/raphael.js"></script>
-        <script defer type="text/javascript"  src="appscripts/main.js">
-        </script>  -->
+<body>
 
-        <title>WaterAid </title>
-    </head>
+    <header>
+        <div class="container">
+            <img src="assets/logo.png" alt="logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a id="home" href="./index.html">About Us</a></li>
+                    <li><a id="ourImpact" href="./ourImpact.html">Our Impact</a></li>
+                </ul>
+            </nav>
+    
+            <script>
+                document.getElementById("ourImpact").classList.add('clicked')
+                document.querySelectorAll('nav a').forEach(function(element) {
+                    element.addEventListener('click', function(event) {
+                                
+                                
+                    // Remove the 'clicked' class from all links
+                    document.querySelectorAll('nav a').forEach(function(el) {
+                        el.classList.remove('clicked');
+                    });
+                    
+                // Add the 'clicked' class to the clicked link
+                    this.classList.add('clicked');
+                    });
+                });
+            </script>
+     
+        </div>
+    </header>
 
-    <body id="ourImpact"> 
-        <h1>So far, we have directly reached ... </h1>
-        <img src="assets/impact1.png" alt="Logo">
-        <img src="assets/impact2.png" alt="Logo">
-      
-    </body>
+<!-- This is the container layout for whole body-->
+
+<div class="container">
+    <h1>So far, we have directly reached ... </h1>
+    <img src="assets/impact1.png" alt="impact 1" class="impact">
+    <img src="assets/impact2.png" alt="impact 2" class="impact">
+    <h4> Read more about our impact <a href="https://www.wateraid.org/uk/what-we-do/our-impact">here!</a><br><br></h4>
+
+    <!-- Second Row for 'Who We Are'-->
+    <div class="row">
+        
+    </div>
+
+    <!-- Third Row for 'What We Do'-->
+    <div class="row">
+     
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
 </html>

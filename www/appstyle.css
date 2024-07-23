@@ -3,6 +3,15 @@ body{
     background-color: #F5F5F5;
 }
 
+h1{
+    color: black;
+    font-family: 'Karla';
+    font-style: Bold;
+    font-weight: 1000;
+    margin-top: 2%;
+
+}
+
 h2{
     color: #0076A8;
     font-family: 'Karla';
@@ -35,7 +44,7 @@ img{
     /* height: auto; */
 }
 
-/* header / navbar styles */
+/* header / navbar styles https://www.youtube.com/watch?v=FEmysQARWFU */
 header{
     background-color: white;
 }
@@ -48,14 +57,20 @@ header::after{
 
 .logo{
     float:left;
-    /* max-height: 10%;
+    /* max-height: 1%;
     width:auto; */
-    height: 20px;
-    width: 20px;
+    height: 80px;
+    width: auto;
+    padding: 10px 0;
 }
 
 nav{
-    float:right;
+    /* float:right; */
+    float:left;
+    text-align: center;
+    padding-top: 1.8%;
+    padding-bottom: 0.8%;
+    padding-left: 5%;
 }
 
 nav ul {
@@ -66,8 +81,61 @@ nav ul {
 
 nav li {
     display: inline-block;
-    margin-left: 70px;
+    margin-left: 50px;
+    /* margin-right: 10%; */
+    padding-bottom: 2%;
+    padding-top: 5%;
+
+    position: relative;
 }
+
+nav a {
+    color: black;
+    text-decoration: none;
+    font-family: 'Karla';
+    font-style: medium;
+    font-weight: 600;
+    font-size: 18px;
+    
+
+}
+
+/* When hover over a element */
+nav a:hover{
+    color: #00B1F3;
+    font-style: bold;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+nav a::after{
+    content:'';
+    display: block;
+    height: 2px;
+    /* width: 100%; */
+    background-color: black;
+    margin-top: 5%;
+
+    position:absolute;
+    width: 0%;
+
+    transition: all ease-in-out 150ms;
+}
+
+nav a:hover::after,
+nav a.clicked::after{
+    width: 100%;
+    background-color: #00B1F3;
+}
+
+/* When select a element */
+nav a.clicked{
+    color: #00B1F3;
+    font-style: bold;
+    text-decoration: none;
+    font-weight: 700;
+}
+
 
 /* Who We Are Section Styles */
 .row-equal {
@@ -138,4 +206,9 @@ nav li {
 }
 
 
-  
+ 
+/* Our impact page styles */
+.impact{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
