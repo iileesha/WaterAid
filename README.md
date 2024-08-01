@@ -12,4 +12,5 @@ pip install "ibm-watson-machine-learning>=1.0.320" <br>
 pip install ibm-watsonx-ai <br>
 pip install pydantic==1.10.8 <br> 
 python -m pip install "pymongo[srv]"==3.6 <br> 
+pip install streamlit <br>
 
