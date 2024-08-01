@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import pandas as pd
+import json
+
 
 
 # URL = "https://www.wateraid.org/uk/get-involved/events/london-landmarks-half-marathon"
@@ -16,13 +18,14 @@ import pandas as pd
 # links = ["https://www.wateraid.org//uk/get-involved/events/ride-across-britain", "https://www.wateraid.org//uk/get-involved/teaching-resources/ks3/managing-climate-change", "https://www.wateraid.org/uk/get-involved/fundraising/harvest-appeal"]
 # links = ["https://www.wateraid.org//uk/get-involved/events/dragon-boat-race", "https://www.wateraid.org//uk/get-involved/fundraising/play-our-raffle"]
 links = []
-with open('Listing Links (2024-07-15).csv', 'r') as file:
+with open('Listing Links (2024-07-24).csv', 'r') as file:
     reader = csv.reader(file)
     for row in reader:
         URL = row[0]
         links.append(URL)
 
 activity_df = pd.DataFrame()
+list_of_activity_details = []
 for URL in links:
     print(URL)
     page = requests.get(URL) 
@@ -222,6 +225,7 @@ for URL in links:
         cat1_activity_type = cat1_activity_type[:cat1_activity_type.find("/")]
     # print(cat1_activity_type)
 
+    # Prepare data to be stored in csv
     activity = pd.DataFrame({
         'Listing URL': [URL],
         'Name of Activity': [event_name],
@@ -235,5 +239,23 @@ for URL in links:
     # print(event_description)
     activity_df = pd.concat([activity, activity_df])
 
+    # Prepare data to be stored in JSON document
+    activity_dict = {
+        'Listing URL': URL,
+        'Name of Activity': event_name,
+        'Date': event_date,
+        'Location': event_loc,
+        'Event Synopsis': event_synopsis,
+        'Event Description': event_description,
+        'Registration Link': event_link_to_register,
+        'Activity Category': cat1_activity_type
+    }
 
-activity_df.to_csv('Listings Details.csv', index=False, encoding='utf-8-sig')
+    list_of_activity_details.append(activity_dict)
+
+
+activity_df.to_csv('Listings Details.csv', index=False, encoding='utf-8-sig') #write to csv
+
+print(list_of_activity_details)
+# with open('Listing Details JSON.json', 'w') as file: #write to json
+#     file.write(json.dumps(list_of_activity_details))

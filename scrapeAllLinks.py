@@ -103,7 +103,7 @@ for collection in collection_divs:
             continue
         else:
             if url.find("get-involved") != -1: #if 'get-involved' is in url, then continue
-                if url.find("plan") == -1 and url.find("guide") == -1: #if 'plan' or 'guide is not in url, then continue
+                if url.find("plan") == -1 and url.find("guide") == -1 and url.find("alexa") == -1: #if 'plan' or 'guide is not in url, then continue
                     if url.find("shop") == -1: #if 'shop' is not in url, then continue
                         if url.find("event-resources") == -1:
                             links.append(url) 
