@@ -254,7 +254,7 @@ for URL in links:
     list_of_activity_details.append(activity_dict)
 
 
-activity_df.to_csv('Listings Details.csv', index=False, encoding='utf-8-sig') #write to csv
+activity_df.to_csv('Listings_Details.csv', index=False, encoding='utf-8-sig') #write to csv
 
 print(list_of_activity_details)
 # with open('Listing Details JSON.json', 'w') as file: #write to json

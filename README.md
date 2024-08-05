@@ -13,4 +13,7 @@ pip install ibm-watsonx-ai <br>
 pip install pydantic==1.10.8 <br> 
 python -m pip install "pymongo[srv]"==3.6 <br> 
 pip install streamlit <br>
+pip install langchain-huggingface <br>
+pip install psycopg2 <br>
+pip install pgvector <br>
 

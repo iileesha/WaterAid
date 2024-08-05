@@ -8,6 +8,8 @@ from ibm_watson_machine_learning.foundation_models.extensions.langchain import W
 
 from pymongo import MongoClient
 
+import pandas as pd
+from langchain_huggingface import HuggingFaceEmbeddings
 
 # from ibm_watsonx_ai import Credentials
 # from ibm_watsonx_ai.foundation_models import ModelInference
@@ -19,7 +21,6 @@ from pymongo import MongoClient
 # try:
 #     wxa_url = os.environ["WXA_URL"] 
 #     # wxa_url = os.environ["https://eu-gb.ml.cloud.ibm.com"] 
-#     #https://api.eu-gb.dataplatform.cloud.ibm.com/wx NOT THIS
 #     # https://eu-gb.ml.cloud.ibm.com
 
 # except KeyError:
@@ -52,83 +53,99 @@ from pymongo import MongoClient
 #     MONGO_CONN = getpass.getpass("Please enter your MongoDB connection String (hit enter): ")
 
 
-# # Language Model
+wxa_url = "https://eu-gb.ml.cloud.ibm.com"
+wxa_api_key = "ew9FSpkxGdAS91FvT_t4CjC30JYF-vRZayqRMDs7Afsb"
+wxa_project_id = "573a5af9-21d8-414c-90ea-ca983ffa683c"
 
-# parameters = {
-#     GenParams.DECODING_METHOD: DecodingMethods.GREEDY,
-#     GenParams.MIN_NEW_TOKENS: 1,
-#     GenParams.MAX_NEW_TOKENS: 200
+# Load your CSV file into a pandas DataFrame
+df = pd.read_csv('Listings Details.csv')
+
+# Helper function: get embeddings for a text
+def get_embeddings(text):
+    embeddings = HuggingFaceEmbeddings()
+    query_result = embeddings.embed_query(text)
+    return query_result
+
+# Create embeddings for each piece of content
+
+
+# Large Language Model
+
+parameters = {
+    GenParams.DECODING_METHOD: DecodingMethods.GREEDY,
+    GenParams.MIN_NEW_TOKENS: 1,
+    GenParams.MAX_NEW_TOKENS: 300
+}
+
+
+model = Model(
+    # model_id=ModelTypes.GRANITE_13B_INSTRUCT_V2,
+    model_id="ibm/granite-13b-instruct-v2",
+    params=parameters,
+    credentials={
+        "url": wxa_url,
+        "apikey": wxa_api_key
+    },
+    project_id=wxa_project_id
+)
+
+granite_llm_ibm = WatsonxLLM(model=model)
+
+query = "I want to introduce my daughter to science and spark her enthusiasm. What kind of gifts should I get her?"
+
+# Sample LLM query without RAG framework
+result = granite_llm_ibm(query)
+# print(result)
+print(".\n".join(i.strip() for i in result.split(".")))
+
+
+
+
+# # Initialize Embedding for transforming raw documents to vectors**
+# from langchain.embeddings import HuggingFaceEmbeddings
+# from tqdm import tqdm as notebook_tqdm
+
+# embeddings = HuggingFaceEmbeddings()
+
+# # Example document
+# doc = {
+#     "title": "The Great Gatsby",
+#     "description": "A novel written by American author F. Scott Fitzgerald.",
+#     "author": "F. Scott Fitzgerald",
+#     "year": 1925
 # }
 
+# # Specify fields to embed
+# fields_to_embed = ["title", "description", "author"]
 
-# model = Model(
-#     # model_id=ModelTypes.GRANITE_13B_INSTRUCT_V2,
-#     model_id="ibm/granite-13b-instruct-v2",
-#     params=parameters,
-#     credentials={
-#         "url": wxa_url,
-#         "apikey": wxa_api_key
-#     },
-#     project_id=wxa_project_id
-# )
+# # Function to generate embeddings
+# def generate_field_embeddings(doc, fields):
+#     field_embeddings = {}
+#     for field in fields:
+#         text = doc.get(field, "")
+#         embedding = embeddings.get_text_embedding(text)  # Generate embedding vector
+#         field_embeddings[field] = embedding
+#     return field_embeddings
 
-# granite_llm_ibm = WatsonxLLM(model=model)
+# # Generate embeddings
+# embeddings_dict = generate_field_embeddings(doc, fields_to_embed)
 
-# query = "I want to introduce my daughter to science and spark her enthusiasm. What kind of gifts should I get her?"
+# # Initialize MongoDB client and collection
+# # client = MongoClient(MONGO_CONN)
+# # collection = client["database"]["collection"]
 
-# # Sample LLM query without RAG framework
-# result = granite_llm_ibm(query)
-# # print(result)
-# print(".\n".join(i.strip() for i in result.split(".")))
+# # Prepare document with embeddings
+# doc_with_embeddings = {
+#     "title": doc["title"],
+#     "description": doc["description"],
+#     "author": doc["author"],
+#     "year": doc["year"],
+#     "title_vector": embeddings_dict["title"],
+#     "description_vector": embeddings_dict["description"],
+#     "author_vector": embeddings_dict["author"]
+# }
 
-
-
-
-# Initialize Embedding for transforming raw documents to vectors**
-from langchain.embeddings import HuggingFaceEmbeddings
-from tqdm import tqdm as notebook_tqdm
-
-embeddings = HuggingFaceEmbeddings()
-
-# Example document
-doc = {
-    "title": "The Great Gatsby",
-    "description": "A novel written by American author F. Scott Fitzgerald.",
-    "author": "F. Scott Fitzgerald",
-    "year": 1925
-}
-
-# Specify fields to embed
-fields_to_embed = ["title", "description", "author"]
-
-# Function to generate embeddings
-def generate_field_embeddings(doc, fields):
-    field_embeddings = {}
-    for field in fields:
-        text = doc.get(field, "")
-        embedding = embeddings.get_text_embedding(text)  # Generate embedding vector
-        field_embeddings[field] = embedding
-    return field_embeddings
-
-# Generate embeddings
-embeddings_dict = generate_field_embeddings(doc, fields_to_embed)
-
-# Initialize MongoDB client and collection
-# client = MongoClient(MONGO_CONN)
-# collection = client["database"]["collection"]
-
-# Prepare document with embeddings
-doc_with_embeddings = {
-    "title": doc["title"],
-    "description": doc["description"],
-    "author": doc["author"],
-    "year": doc["year"],
-    "title_vector": embeddings_dict["title"],
-    "description_vector": embeddings_dict["description"],
-    "author_vector": embeddings_dict["author"]
-}
-
-print(doc_with_embeddings)
+# print(doc_with_embeddings)
 
 # Insert document into MongoDB
 # collection.insert_one(doc_with_embeddings)
