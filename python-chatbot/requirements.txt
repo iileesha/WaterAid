@@ -3,3 +3,4 @@ pgvector
 langchain-huggingface
 ibm-watson-machine-learning>=1.0.320
 ibm-watsonx-ai
+langchain-community
