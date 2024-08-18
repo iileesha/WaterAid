@@ -1,6 +1,5 @@
 langchain
 pgvector
-psycopg2
 langchain-huggingface
 ibm-watson-machine-learning>=1.0.320
 ibm-watsonx-ai
