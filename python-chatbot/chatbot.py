@@ -111,16 +111,17 @@ if "query" not in st.session_state:
 # Define the questions
 questions = [
     "What do you like to do in your free time? Separate by comma if you have multiple interests/hobbies. \n Hint: I like to _________________ in my free time. Fill in the blanks.",
+    "Do you have any present/past work/volunteering experiences? Separate by comma if you have more than two experiences. Use 'NA' if you do not have any experience. \n Hint: I have experiences as a ____________________. Fill in the blanks if you have any experiences.",
     "Whereabouts are you based in? Which location would you prefer? \n Hint: I am based in _______. Fill in the blanks."
     # "How old are you? Type a number!",
     # "What do you do for a living?"
-    # "Do you have any past work experiences? Separate by comma if you have multiple experiences. Use 'NA' if you do not have any experience.",
     # "What skills (hard/soft) do you have? Separate by comma if you have multiple skills.",
     
 ]
 
 st.markdown("Welcome, I’m Walter from WaterAid. Help me answer a few questions and I can help you find activities that you may enjoy while contributing to our cause!")
-st.markdown("Do note that I am a chatbot and not a real person, and will not be able to offer any services or answers outside of the designed chat!")
+st.markdown("NOTE: I am a chatbot and not a real person, and will not be able to offer any services or answers outside of the designed chat!")
+st.markdown("NOTE ALSO: If you find that results are not great, fill in 'NA' for the question on work/ volunteering experience.")
 st.divider()
 
 # Build Q&A dialogue conversation & Accept User input
@@ -147,6 +148,12 @@ if prompt:
             temp = "I like to " + prompt + " in my free time. "
             st.session_state.query += temp
 
+        elif st.session_state.question_index == 2:
+            if prompt == "NA" or prompt == "na" or prompt == "no" or prompt == "No":
+                temp = ""
+            else:
+                temp = "I have experiences as a " + prompt
+            st.session_state.query += temp
         Walter_res = questions[st.session_state.question_index]
         st.session_state.messages.append({"role": "Walter", "content": Walter_res})
         st.session_state.question_index += 1
@@ -154,8 +161,9 @@ if prompt:
             st.markdown(Walter_res)
 
     else:
-        temp = "I am based in " + prompt + ". What activities are recommended for me based on the activities in the context provided - give the specific name of the activity? Give a reason why each activity is recommended for me."
-        st.session_state.query += temp
+        temp = "I am based in " + prompt + ". "
+        temp2 = ". What activities are recommended for me based on the activities in the context provided - give the specific name of the activity? Give a reason why each activity is recommended for me."
+        st.session_state.query = temp + st.session_state.query + temp2
         if st.session_state.messages[-2]["content"] != "Whereabouts are you based in? Which location would you prefer? \n Hint: I am based in _______. Fill in the blanks.":
             if prompt != "Again" or prompt != "again":
                 bye_msg = "Thank you for using our recommendation service! Type 'Again' anytime to restart the service"
