@@ -24,9 +24,14 @@ from ibm_watson_machine_learning.foundation_models.extensions.langchain import W
 CONNECTION_STRING = "postgresql://postgres:123456@localhost:5433/wateraid"
 wxa_url = "https://eu-gb.ml.cloud.ibm.com"
 # wxa_api_key = "ew9FSpkxGdAS91FvT_t4CjC30JYF-vRZayqRMDs7Afsb" # old because hit monthly token limit
-wxa_api_key = "7AMq7kpxXp8tJTMo-_qj59FhEcC5ewkTS_pAPfOgAjFz" 
+# wxa_api_key = "7AMq7kpxXp8tJTMo-_qj59FhEcC5ewkTS_pAPfOgAjFz" # second account also hit monthly token limit
+# wxa_api_key = "1BPdoGgE0gnc9HmADHed524_M9K2uLHdYCdIpDs6DSNp" #third account but will be focused to use for watson assistant chatbot (if current uncommented account hits limit, can use this instead)
+wxa_api_key = "NG7zfeBgtz4YD4u91QXzOkgvdGlGSzYRxgtRmTebgitK" #focused to use for python chatbot
+
 # wxa_project_id = "573a5af9-21d8-414c-90ea-ca983ffa683c" # old because hit monthly token limit
-wxa_project_id = "f65d106f-b186-418b-8c00-f67cd14f95cf"
+# wxa_project_id = "f65d106f-b186-418b-8c00-f67cd14f95cf" # second account also hit monthly token limit
+# wxa_project_id = "a1acd8b8-07ce-461f-b512-e9854d00c075" #third account but will be focused to use for watson assistant chatbot (if current uncommented account hits limit, can use this instead)
+wxa_project_id = "5ca8251a-a60f-4ef0-a9fe-bb65a3f72448" #focused to use for python chatbot
 
 # Set up Watsonx Granite LLM Model
 
