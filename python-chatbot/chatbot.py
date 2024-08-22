@@ -116,7 +116,7 @@ if "query" not in st.session_state:
 # Define the questions
 questions = [
     "What do you like to do in your free time? Separate by comma if you have multiple interests/hobbies. \n Hint: I like to _________________ in my free time. Fill in the blanks.",
-    "Do you have any present/past work/volunteering experiences? Separate by comma if you have more than two experiences. Use 'NA' if you do not have any experience. \n Hint: I have experiences as a ____________________. Fill in the blanks if you have any experiences.",
+    "Do you have any present/past work or volunteering experiences? Separate by comma if you have more than two experiences. Use 'NA' if you do not have any experience. \n Hint: I have experiences as a ____________________. Fill in the blanks if you have any experiences.",
     "Whereabouts are you based in? Which location would you prefer? \n Hint: I am based in _______. Fill in the blanks."
     # "How old are you? Type a number!",
     # "What do you do for a living?"
@@ -157,7 +157,7 @@ if prompt:
             if prompt == "NA" or prompt == "na" or prompt == "no" or prompt == "No":
                 temp = ""
             else:
-                temp = "I have experiences as a " + prompt
+                temp = "I have experiences as a " + prompt + ". "
             st.session_state.query += temp
         Walter_res = questions[st.session_state.question_index]
         st.session_state.messages.append({"role": "Walter", "content": Walter_res})
@@ -167,7 +167,7 @@ if prompt:
 
     else:
         temp = "I am based in " + prompt + ". "
-        temp2 = ". What activities are recommended for me based on the activities in the context provided - give the specific name of the activity? Give a reason why each activity is recommended for me."
+        temp2 = "What activities are recommended for me based on the activities in the context provided - give the specific name of the activity? Give a reason why each activity is recommended for me."
         st.session_state.query = temp + st.session_state.query + temp2
         if st.session_state.messages[-2]["content"] != "Whereabouts are you based in? Which location would you prefer? \n Hint: I am based in _______. Fill in the blanks.":
             if prompt != "Again" or prompt != "again":
