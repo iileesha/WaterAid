@@ -69,7 +69,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
+<!-- Original chatbot; but account free trial could not be extended -->
+<!-- <script>
     window.watsonAssistantChatOptions = {
       integrationID: "968b9eef-f7db-44b7-b75c-fbadaa32f0f6", // The ID of this integration.
       region: "eu-gb", // The region your integration is hosted in.
@@ -81,7 +82,21 @@
       t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
       document.head.appendChild(t);
     });
-  </script>
+</script> -->
+
+<script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "44b80259-9816-46f6-8e84-97eb8e5a6c66", // The ID of this integration.
+      region: "eu-gb", // The region your integration is hosted in.
+      serviceInstanceID: "94c3397f-a237-4060-913f-1df89ff8c727", // The ID of your service instance.
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+</script>
 </body>
 
 </html>
