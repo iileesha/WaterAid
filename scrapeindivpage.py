@@ -35,9 +35,9 @@ for URL in links:
     content_type = page.headers.get('content-type', '')
     if 'text/html' not in content_type: 
         continue
-    # page.encoding = 'uft-8'
+    
     soup = BeautifulSoup(page.content, "html.parser")
-    # print(soup.getText())
+    
 
     # List of variables to be extracted - typically every event must have event name and event description
     event_name = ""

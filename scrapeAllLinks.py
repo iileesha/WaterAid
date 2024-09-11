@@ -39,21 +39,6 @@ accept_cookies= WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.X
 driver.execute_script("arguments[0].click();", accept_cookies)
 
 time.sleep(2)
-# for COUNTER in range(1, 2):
-#     print(COUNTER)
-#     if COUNTER == 1:
-#         time.sleep(2)
-#         driver.execute_script("window.scrollTo(0, 2000)")
-#         time.sleep(2)
-#         driver.find_element(By.XPATH, '//*[@id="main-content"]/div[2]/nav/ul/li/a').click()
-#     elif COUNTER == 2:
-#         time.sleep(5)
-#         driver.execute_script("window.scrollBy(0, 750);")
-#     else: 
-#         time.sleep(5)
-#         driver.execute_script("window.scrollBy(0, 900);") #note: scrollby value will differ depending on laptop window size
-#         time.sleep(3)
-#         driver.find_element(By.XPATH, '//*[@id="main-content"]/div[2]/nav/ul/li/a').click()
 counter = 1
 while True:
     try:
@@ -121,6 +106,19 @@ with open(filename, 'w', newline='') as file:
     for link in links:
         writer.writerow([link])
 
-# print(links)
-# print(len(links))
+# for COUNTER in range(1, 2):
+#     print(COUNTER)
+#     if COUNTER == 1:
+#         time.sleep(2)
+#         driver.execute_script("window.scrollTo(0, 2000)")
+#         time.sleep(2)
+#         driver.find_element(By.XPATH, '//*[@id="main-content"]/div[2]/nav/ul/li/a').click()
+#     elif COUNTER == 2:
+#         time.sleep(5)
+#         driver.execute_script("window.scrollBy(0, 750);")
+#     else: 
+#         time.sleep(5)
+#         driver.execute_script("window.scrollBy(0, 900);") #note: scrollby value will differ depending on laptop window size
+#         time.sleep(3)
+#         driver.find_element(By.XPATH, '//*[@id="main-content"]/div[2]/nav/ul/li/a').click()
 
