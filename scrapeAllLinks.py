@@ -13,6 +13,7 @@ from datetime import date
 
 
 # Notes:
+# To implement this web scraping script, python libraries Selenium and Beautiful Soup were used. 
 # Currently a manual method is used to allow the page to load using (time.sleep(s)), but a better method can be used (WebDriverWait(driver, 20).until(EC.element_to_be_clickable(() to allow for the page to load and to find elements to interact with too.
 # This can replace the current implemented method to find and letting the page load of time.sleep(s) and driver.find_element()
 # If the program stops working, it could be due to slow connectivity issues, close the window and try again

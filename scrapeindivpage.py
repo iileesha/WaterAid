@@ -4,19 +4,7 @@ import csv
 import pandas as pd
 import json
 
-
-
-# URL = "https://www.wateraid.org/uk/get-involved/events/london-landmarks-half-marathon"
-# URL = "https://www.wateraid.org/uk/get-involved/events/yorkshire-three-peaks-weekend"
-# URL = "https://www.wateraid.org/uk/get-involved/events/trek-kilimanjaro"
-# URL = "https://www.wateraid.org/uk/get-involved/events/dragon-boat-race"
-# URL = "https://www.wateraid.org/uk/get-involved/events/the-severn-trent-mountain-challenge"
-# URL = "https://www.wateraid.org/uk/get-involved/fundraising/lent-appeal-jars-of-change"
-# URL = "https://www.wateraid.org/uk/get-involved/fundraising/harvest-appeal"
-# URL = "https://www.wateraid.org//uk/get-involved/teaching-resources/ks3/managing-climate-change"
-
-# links = ["https://www.wateraid.org//uk/get-involved/events/ride-across-britain", "https://www.wateraid.org//uk/get-involved/teaching-resources/ks3/managing-climate-change", "https://www.wateraid.org/uk/get-involved/fundraising/harvest-appeal"]
-# links = ["https://www.wateraid.org//uk/get-involved/events/dragon-boat-race", "https://www.wateraid.org//uk/get-involved/fundraising/play-our-raffle"]
+# To implement this web scraping script, requests and Beautiful Soup Python libraries was used. 
 links = []
 with open('Listing Links (2024-07-24).csv', 'r') as file:
     reader = csv.reader(file)

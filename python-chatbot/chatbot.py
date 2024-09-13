@@ -19,6 +19,9 @@ from ibm_watson_machine_learning.foundation_models.extensions.langchain import W
 
 
 ### HELPER FUNCTIONS #################
+## These helper functions were implemented with reference to the approach used in this URL: https://www.mongodb.com/developer/products/atlas/how-seamlessly-use-mongodb-atlas-ibm-watsonx-ai-genai-applications/
+## The method used to set up LLM model involves the 'ibm_watson_machine_learning' library
+## The method used to create the retrieval and query function involves the 'langchain' Python library and PGVector extension
 
 # Set up Connections to database and Watsonx AI for LLM Models
 CONNECTION_STRING = "postgresql://postgres:123456@localhost:5433/wateraid"
@@ -33,8 +36,7 @@ wxa_api_key = "NG7zfeBgtz4YD4u91QXzOkgvdGlGSzYRxgtRmTebgitK" #focused to use for
 # wxa_project_id = "a1acd8b8-07ce-461f-b512-e9854d00c075" #third account but will be focused to use for watson assistant chatbot (if current uncommented account hits limit, can use this instead)
 wxa_project_id = "5ca8251a-a60f-4ef0-a9fe-bb65a3f72448" #focused to use for python chatbot
 
-# Set up Watsonx Granite LLM Model
-
+# Set up Watsonx Granite LLM Model 
 def LLM_set_up():
     parameters = {
         GenParams.DECODING_METHOD: DecodingMethods.GREEDY,
