@@ -1,6 +1,6 @@
 # WaterAid
 
-Make sure to have these python libraries installed before running python scripts and jupyter notebook: <br>
+Make sure to have these libraries installed before running code files: <br>
 pip install requests <br>
 pip install html5lib <br>
 pip install bs4 <br> 
