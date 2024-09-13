@@ -1,6 +1,5 @@
 import streamlit as st
 import time
-# from helper import *
 
 from langchain.vectorstores.pgvector import PGVector
 import pandas as pd
