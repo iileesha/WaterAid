@@ -23,10 +23,13 @@ from ibm_watson_machine_learning.foundation_models.extensions.langchain import W
 ## The method used to create the retrieval and query function involves the 'langchain' Python library and PGVector extension
 
 # Set up Connections to database and Watsonx AI for LLM Models
-# Local Postgres Database conn string 
-# CONNECTION_STRING = "postgresql://postgres:123456@localhost:5433/wateraid" 
-# Postgres Database hosted on neon conn string
-CONNECTION_STRING = "postgresql://wateraid_owner:TLolWd8Gzpy0@ep-falling-lab-a2olaxf3.eu-central-1.aws.neon.tech/wateraid?sslmode=require"
+    # Local Postgres Database conn string 
+CONNECTION_STRING = "postgresql://postgres:123456@localhost:5433/wateraid" 
+    # Postgres Database hosted on neon conn string
+    # ultimately, decided to use local database since embeddings generated on hosted database were different despite using the same embedding model
+    # and this difference in embeddings caused chatbot to generate worse results and responses when using the hosted database, which is not ideal
+    # Although the final chatbot application uses local database, instruction for deploying database on Neon is still provided in the system manual
+# CONNECTION_STRING = "postgresql://wateraid_owner:TLolWd8Gzpy0@ep-falling-lab-a2olaxf3.eu-central-1.aws.neon.tech/wateraid?sslmode=require"
 
 
 wxa_url = "https://eu-gb.ml.cloud.ibm.com"
