@@ -23,7 +23,12 @@ from ibm_watson_machine_learning.foundation_models.extensions.langchain import W
 ## The method used to create the retrieval and query function involves the 'langchain' Python library and PGVector extension
 
 # Set up Connections to database and Watsonx AI for LLM Models
-CONNECTION_STRING = "postgresql://postgres:123456@localhost:5433/wateraid"
+# Local Postgres Database conn string 
+# CONNECTION_STRING = "postgresql://postgres:123456@localhost:5433/wateraid" 
+# Postgres Database hosted on neon conn string
+CONNECTION_STRING = "postgresql://wateraid_owner:TLolWd8Gzpy0@ep-falling-lab-a2olaxf3.eu-central-1.aws.neon.tech/wateraid?sslmode=require"
+
+
 wxa_url = "https://eu-gb.ml.cloud.ibm.com"
 # wxa_api_key = "ew9FSpkxGdAS91FvT_t4CjC30JYF-vRZayqRMDs7Afsb" # old because hit monthly token limit
 # wxa_api_key = "7AMq7kpxXp8tJTMo-_qj59FhEcC5ewkTS_pAPfOgAjFz" # second account also hit monthly token limit
